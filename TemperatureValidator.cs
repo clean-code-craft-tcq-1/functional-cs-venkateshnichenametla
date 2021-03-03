@@ -1,23 +1,23 @@
 ﻿namespace BatteryManagementSystem
 {
-    public class TemperatureValidator : IValidator<BatteryProtector>
+    public class TemperatureValidator : IValidator<BatteryManager>
     {
         private static readonly float temperatureMinimum = 0;
 
         private static readonly float temperatureMaximum = 45;
 
-        public bool IsValid(BatteryProtector batteryProtector)
+        public bool IsValid(BatteryManager batteryManager)
         {
-            return !(batteryProtector.Temperature < temperatureMinimum || batteryProtector.Temperature > temperatureMaximum);
+            return !(batteryManager.Temperature < temperatureMinimum || batteryManager.Temperature > temperatureMaximum);
         }
 
-        public BreachLevel GetBreachLevel(BatteryProtector batteryProtector)
+        public BreachLevel GetBreachLevel(BatteryManager batteryManager)
         {
-            if (batteryProtector.Temperature < temperatureMinimum)
+            if (batteryManager.Temperature < temperatureMinimum)
             {
                 return BreachLevel.Low;
             }
-            else if (batteryProtector.Temperature > temperatureMaximum)
+            else if (batteryManager.Temperature > temperatureMaximum)
             {
                 return BreachLevel.High;
             }

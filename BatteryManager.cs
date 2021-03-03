@@ -1,6 +1,6 @@
 ﻿namespace BatteryManagementSystem
 {
-    public class BatteryProtector
+    public class BatteryManager
     {
         public float Temperature { get; set; }
 
@@ -8,7 +8,7 @@
 
         public float ChargeRate { get; set; }
 
-        public BatteryProtector(float temperature, float stateOfCharge, float chargeRate)
+        public BatteryManager(float temperature, float stateOfCharge, float chargeRate)
         {
             Temperature = temperature;
             StateOfCharge = stateOfCharge;

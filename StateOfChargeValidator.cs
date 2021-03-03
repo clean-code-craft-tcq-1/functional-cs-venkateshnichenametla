@@ -1,23 +1,23 @@
 ﻿namespace BatteryManagementSystem
 {
-    public class StateOfChargeValidator : IValidator<BatteryProtector>
+    public class StateOfChargeValidator : IValidator<BatteryManager>
     {
         private static readonly float stateOfChargeMinimum = 20;
 
         private static readonly float stateOfChargeMaximum = 80;
 
-        public bool IsValid(BatteryProtector batteryProtector)
+        public bool IsValid(BatteryManager batteryManager)
         {
-            return !(batteryProtector.StateOfCharge < stateOfChargeMinimum || batteryProtector.StateOfCharge > stateOfChargeMaximum);
+            return !(batteryManager.StateOfCharge < stateOfChargeMinimum || batteryManager.StateOfCharge > stateOfChargeMaximum);
         }
 
-        public BreachLevel GetBreachLevel(BatteryProtector batteryProtector)
+        public BreachLevel GetBreachLevel(BatteryManager batteryManager)
         {
-            if (batteryProtector.StateOfCharge < stateOfChargeMinimum)
+            if (batteryManager.StateOfCharge < stateOfChargeMinimum)
             {
                 return BreachLevel.Low;
             }
-            else if (batteryProtector.StateOfCharge > stateOfChargeMaximum)
+            else if (batteryManager.StateOfCharge > stateOfChargeMaximum)
             {
                 return BreachLevel.High;
             }
