@@ -15,6 +15,7 @@
             ChargeRate = chargeRate;
         }
 
+        //impure function. Not used at all
         public bool IsValid()
         {
             TemperatureValidator temperatureValidator = new TemperatureValidator();

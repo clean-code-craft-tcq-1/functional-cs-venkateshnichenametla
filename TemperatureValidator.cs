@@ -6,11 +6,13 @@
 
         private static readonly float temperatureMaximum = 45;
 
+        //Pure function
         public bool IsValid(BatteryManager batteryManager)
         {
             return !(batteryManager.Temperature < temperatureMinimum || batteryManager.Temperature > temperatureMaximum);
         }
 
+        //Pure function
         public BreachLevel GetBreachLevel(BatteryManager batteryManager)
         {
             if (batteryManager.Temperature < temperatureMinimum)

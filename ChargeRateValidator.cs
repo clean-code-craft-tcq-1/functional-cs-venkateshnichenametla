@@ -6,11 +6,13 @@
 
         static readonly float chargeRateMinimum = 0.3f;
 
+        //Pure function
         public bool IsValid(BatteryManager batteryManager)
         {
             return !(batteryManager.ChargeRate > chargeRateMaximum);
         }
 
+        //Pure function
         public BreachLevel GetBreachLevel(BatteryManager batteryManager)
         {
             if (batteryManager.ChargeRate < chargeRateMinimum)

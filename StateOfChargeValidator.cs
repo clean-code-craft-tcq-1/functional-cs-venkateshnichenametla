@@ -6,11 +6,13 @@
 
         private static readonly float stateOfChargeMaximum = 80;
 
+        //Pure function
         public bool IsValid(BatteryManager batteryManager)
         {
             return !(batteryManager.StateOfCharge < stateOfChargeMinimum || batteryManager.StateOfCharge > stateOfChargeMaximum);
         }
 
+        //Pure function
         public BreachLevel GetBreachLevel(BatteryManager batteryManager)
         {
             if (batteryManager.StateOfCharge < stateOfChargeMinimum)
