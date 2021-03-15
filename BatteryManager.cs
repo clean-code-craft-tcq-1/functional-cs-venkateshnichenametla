@@ -1,34 +1,45 @@
-﻿namespace BatteryManagementSystem
+﻿using System;
+namespace BatteryManagementSystem
 {
     public class BatteryManager
     {
-        public float Temperature { get; set; }
-
-        public float StateOfCharge { get; set; }
-
-        public float ChargeRate { get; set; }
-
-        public BatteryManager(float temperature, float stateOfCharge, float chargeRate)
+        public static bool IsBatteryConditionOk(float temperature, float stateOfCharge, float chargeRate)
         {
-            Temperature = temperature;
-            StateOfCharge = stateOfCharge;
-            ChargeRate = chargeRate;
+            return IsTemperatureInRange(temperature) && IsStateOfChargeInRange(stateOfCharge) && IsChargeRateInRange(chargeRate);
         }
 
-        //impure function. Not used at all
-        public bool IsValid()
+        public static bool IsTemperatureInRange(float temperature)
         {
-            TemperatureValidator temperatureValidator = new TemperatureValidator();
-            if (temperatureValidator.IsValid(this))
-            {
-                ChargeRateValidator chargeRateValidator = new ChargeRateValidator();
-                if (chargeRateValidator.IsValid(this))
-                {
-                    StateOfChargeValidator stateOfChargeValidator = new StateOfChargeValidator();
-                    return stateOfChargeValidator.IsValid(this);
-                }
-            }
-            return false;
+            bool isValid = IsInRange(temperature, BatteryRanges.MinimumTemperature, BatteryRanges.MaximumTemperature);
+            if (!isValid)
+                DisplayErrorMessage("Temperture is Out of Range");
+            return isValid;
+        }
+
+        public static bool IsStateOfChargeInRange(float stateOfCharge)
+        {
+            bool isValid = IsInRange(stateOfCharge, BatteryRanges.MinimumStateOfCharge, BatteryRanges.MaximumStateOfCharge);
+            if (!isValid)
+                DisplayErrorMessage("State of charge is Out of Range");
+            return isValid;
+        }
+
+        public static bool IsChargeRateInRange(float chargeRate)
+        {
+            bool isValid = IsInRange(chargeRate, BatteryRanges.MinimumChargeRate, BatteryRanges.MaximumChargeRate);
+            if (!isValid)
+                DisplayErrorMessage("Charge Rate is Out of Range");
+            return isValid;
+        }
+
+        public static bool IsInRange(float currentValue, float minimumValue, float maximumValue)
+        {
+            return ((currentValue > minimumValue) && (currentValue < maximumValue));
+        }
+
+        public static void DisplayErrorMessage(string message)
+        {
+            Console.WriteLine(message);
         }
     }
 }

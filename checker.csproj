@@ -4,15 +4,13 @@
   </PropertyGroup>
   <PropertyGroup>
     <RootNamespace>BatteryManagementSystem</RootNamespace>
+    <ProjectGuid>{AF8B8343-234A-494B-B1D4-83A9EE9B5C13}</ProjectGuid>
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="checker.cs" />
+	<Compile Include="BatteryRanges.cs" />
     <Compile Include="BatteryManager.cs" />
-    <Compile Include="ChargeRateValidator.cs" />
-    <Compile Include="IValidator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StateOfChargeValidator.cs" />
-    <Compile Include="TemperatureValidator.cs" />
   </ItemGroup>
   <ItemGroup />
   <Target Name="Build">
